@@ -1,0 +1,72 @@
+{
+  "name": "msfs2020-airline-manager",
+  "version": "0.0.1",
+  "description": "A virtual airline manager for MSMF2020",
+  "main": "build/index.js",
+  "scripts": {
+    "build:client": "parcel build client/index.html --out-dir server/public --log-level 4 --detailed-report 10",
+    "build:server": "tsc -p server && cp -R server/public dist/",
+    "build:server:dev": "tsc -p server",
+    "build": "rm -rf dist; echo \"Building...\"; npm run build:client && npm run build:server",
+    "dev:server": "node scripts/dev:server.js",
+    "dev:client": "rm -rf server/public ; node scripts/dev:client.js",
+    "dev": "rm -rf server/public/* ; node scripts/dev.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "validate:client": "parcel build client/index.html --out-dir server/public --log-level 4 --detailed-report 10",
+    "validate:server": "tsc -p server --noEmit",
+    "validate": "npm run validate:client && npm run validate:server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Otard95/msfs2020-airline-manager.git"
+  },
+  "keywords": [
+    "chess",
+    "4d",
+    "dimentional",
+    "multi-dimentional",
+    "time-travel",
+    "multiverse"
+  ],
+  "author": "Stian Myklebostad (https://github.com/Otard95)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Otard95/msfs2020-airline-manager/issues"
+  },
+  "homepage": "https://github.com/Otard95/msfs2020-airline-manager#readme",
+  "dependencies": {
+    "@types/cors": "^2.8.7",
+    "@types/express": "^4.17.7",
+    "@types/helmet": "0.0.47",
+    "@types/morgan": "^1.9.1",
+    "@types/node": "^14.6.0",
+    "@types/react": "^16.9.46",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/socket.io": "^2.1.11",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.1.0",
+    "morgan": "^1.10.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "socket.io": "^2.3.0",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "chalk": "^4.1.0",
+    "husky": "^4.2.5",
+    "nodemon": "^2.0.4",
+    "parcel-bundler": "^1.12.4"
+  },
+  "alias": {
+    "common": "./common"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "git stash push -m \"tmp stash for pre-commit\" && npm run validate && (git stash pop || exit 0)"
+    }
+  }
+}
