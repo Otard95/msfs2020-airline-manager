@@ -1,2 +1,3 @@
-# 4d-cess
-Chess but you can time-travel and jump to parallel universes.
+# Microsoft Flight Simulator 2020 Airline Manager
+
+A virtual airline manager for MSMF2020
