@@ -1,0 +1,32 @@
+{
+  "name": "msfs2020-airline-manager",
+  "version": "0.0.1",
+  "description": "Electron application",
+  "main": "index.js",
+  "scripts": {
+    "build": "parcel build gui/index.html --out-dir app/gui --log-level 4 --detailed-report 10",
+    "gui:dev": "parcel watch gui/index.html --out-dir ../dist/client/app/gui --out-file index.html",
+    "app:dev": "tsc -w -p .",
+    "dev": "concurrently  'npm run gui:dev' 'npm run app:dev'",
+    "start": "electron ../dist/client/app/main.js",
+    "validate": "parcel build client/index.html --out-dir server/public --log-level 4 --detailed-report 10"
+  },
+  "author": "Stian Myklebostad (https://github.com/Otard95)",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^14.6.4",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "concurrently": "^5.3.0",
+    "electron": "^10.1.1",
+    "parcel-bundler": "^1.12.4"
+  }
+}

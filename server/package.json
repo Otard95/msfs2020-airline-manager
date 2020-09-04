@@ -1,0 +1,46 @@
+{
+  "name": "msfs2020-airline-manager",
+  "version": "0.0.1",
+  "description": "A virtual airline manager for MSMF2020",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc -p server && cp -R server/public dist/",
+    "build:dev": "tsc -p server",
+    "dev": "node scripts/dev:server.js",
+    "validate": "tsc -p server --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Otard95/msfs2020-airline-manager.git"
+  },
+  "keywords": [
+  ],
+  "author": "Stian Myklebostad (https://github.com/Otard95)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Otard95/msfs2020-airline-manager/issues"
+  },
+  "homepage": "https://github.com/Otard95/msfs2020-airline-manager#readme",
+  "dependencies": {
+    "@types/cors": "^2.8.7",
+    "@types/express": "^4.17.7",
+    "@types/helmet": "0.0.47",
+    "@types/morgan": "^1.9.1",
+    "@types/node": "^14.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.1.0",
+    "morgan": "^1.10.0",
+    "typescript": "^3.9.7"
+  },
+  "alias": {
+    "common": "./common"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "git stash push -m \"tmp stash for pre-commit\" && npm run validate && (git stash pop || exit 0)"
+    }
+  }
+}
+
