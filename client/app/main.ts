@@ -1,20 +1,26 @@
-const { app, BrowserWindow } = require('electron')
+import { app, BrowserWindow } from 'electron'
 
 function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1200,
+    height: 900,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    show: false,
   })
 
   // and load the index.html of the app.
   win.loadFile('gui/index.html')
 
-  // Open the DevTools.
-  win.webContents.openDevTools()
+  win.once('ready-to-show', () => {
+    win.show()
+    
+    // Open the DevTools.
+    process.env.NODE_ENV === 'development' && win.webContents.openDevTools()
+  })
+
 }
 
 // This method will be called when Electron has finished
